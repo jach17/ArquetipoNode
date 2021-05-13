@@ -1,6 +1,7 @@
 import UserFacade from './facade';
 import { NextFunction, Request, Response } from 'express';
 import HttpStatusCode from '../../commons/constants/HttpStatusCode';
+import { UserTo } from '../../to/UserTo';
 
 /**
  * @export
@@ -9,10 +10,28 @@ import HttpStatusCode from '../../commons/constants/HttpStatusCode';
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function findAll(req: Request, res: Response, next: NextFunction): Promise < void > {
+export async function findAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
         const User: any[] = await UserFacade.findAll();
         res.status(HttpStatusCode.OK).json(User);
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+export async function create(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        let user: UserTo = { ...req.body };
+        await UserFacade.create(user);
+        res.status(HttpStatusCode.OK).json('ok');
     } catch (error) {
         next(error);
     }

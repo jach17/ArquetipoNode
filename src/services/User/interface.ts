@@ -1,3 +1,4 @@
+import { UserTo } from "../../to/UserTo";
 
 /**
  * @export
@@ -10,4 +11,6 @@ export interface IUserService {
      * @memberof IUserService
      */
     findAll(): Promise<any[]>;
+
+    create(user: UserTo): Promise<void>;
 }

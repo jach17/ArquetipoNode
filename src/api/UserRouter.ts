@@ -8,7 +8,7 @@ const router: Router = Router();
 
 /**
  * GET method route
- * @example http://localhost:PORT/users
+ * @example http://localhost:PORT/users.
  * @swagger
  * /users/:
  *  get:
@@ -23,14 +23,16 @@ const router: Router = Router();
  *              status: 200
  *              message: Users
  */
-router.get('/users', UserFacade.findAll);
+router.get('', UserFacade.findAll);
+
+router.post('', UserFacade.create);
 
 /**
  * GET method route
  * @example http://localhost:PORT/ping
  * @swagger
  * /ping/:
- *  post:
+ *  get:
  *    description: Test service
  *    tags: ["Ping"]
  *    responses:

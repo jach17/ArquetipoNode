@@ -1,4 +1,5 @@
 import { UserService } from "../../services";
+import { UserTo } from "../../to/UserTo";
 import { IUserFacade } from "./interface";
 
 
@@ -14,8 +15,22 @@ const UserFacade: IUserFacade = {
     async findAll(): Promise<any[]> {
 
         let User = await UserService.findAll();
-        return User;
+        let userMap: UserTo[] = [];
+        User.forEach(v => {
+            userMap.push({ id: v.id, name: v.name });
+        });
+        return userMap;
+    },
+
+    /**
+     * @returns {Promise < void >}
+     * @memberof UserFacade
+     */
+    async create(user: UserTo): Promise<void> {
+        await UserService.create(user);
     }
+
+
 }
 
 export default UserFacade;
