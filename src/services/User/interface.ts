@@ -13,4 +13,6 @@ export interface IUserService {
     findAll(): Promise<any[]>;
 
     create(user: UserTo): Promise<void>;
+
+    validate(user: UserTo): Promise<boolean>;
 }

@@ -11,7 +11,7 @@ try {
     console.log('***************************************************');
     console.log('  Seems like you doesn\`t have swagger.json file');
     console.log('  Please, run: ');
-    console.log('  $ swagger-jsdoc -d swaggerDef.js ./src/api/*.ts -o swagger.json');
+    console.log('  $ swagger-jsdoc -d swaggerDef.js ./**/*.ts -o swagger.json');
     console.log('***************************************************');
 }
 

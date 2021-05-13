@@ -5,7 +5,7 @@ RUN npm install -g typescript
 RUN npm install
 COPY . .
 RUN npm install -g swagger-jsdoc
-RUN swagger-jsdoc -d swaggerDef.js -o swagger.json
+RUN swagger-jsdoc -d swaggerDef.js ./**/*.ts -o swagger.json
 RUN npm run build
 
 FROM node:12-slim AS release 

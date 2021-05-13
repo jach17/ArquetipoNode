@@ -25,6 +25,48 @@ const router: Router = Router();
  */
 router.get('', UserFacade.findAll);
 
+
+/**
+ * POST method route
+ * @example http://localhost:PORT/users.
+ * @swagger
+ * /users/:
+ *  post:
+ *    description: Get all Users
+ *    tags: ["Users"]
+ *    requestBody:
+ *      description: object user
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/UserTO'
+ *    responses:
+ *      200:
+ *        description: All Users
+ *        content:
+ *          appication/json:
+ *            example:
+ *              status: 200
+ *              message: ok
+ *      400:
+ *        description: Error bad parameters
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ErrorTo'
+ * components:
+ *   schemas:
+ *     UserTO:
+ *       type: object
+ *       properties:
+ *         name:
+ *              type: string
+ *              example: rjaforever
+ *         email:
+ *              type: string
+ *              example: rjaforever@gmail.com
+ */
 router.post('', UserFacade.create);
 
 /**

@@ -5,7 +5,7 @@
  * @swagger
  * components:
  *  schemas:
- *    Error:
+ *    ErrorTo:
  *      type: object
  *      properties:
  *        errorCode:

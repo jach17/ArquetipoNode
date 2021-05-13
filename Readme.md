@@ -51,7 +51,7 @@ npm run coverage
 
 ```bash
 npm install -g swagger-jsdoc
-swagger-jsdoc -d swaggerDef.js ./src/api/*.ts -o swagger.json
+swagger-jsdoc -d swaggerDef.js ./**/*.ts -o swagger.json
 ```
 
 ## Sonar

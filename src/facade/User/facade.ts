@@ -1,3 +1,4 @@
+import { ParametersError } from "../../config/error";
 import { UserService } from "../../services";
 import { UserTo } from "../../to/UserTo";
 import { IUserFacade } from "./interface";
@@ -17,7 +18,7 @@ const UserFacade: IUserFacade = {
         let User = await UserService.findAll();
         let userMap: UserTo[] = [];
         User.forEach(v => {
-            userMap.push({ id: v.id, name: v.name });
+            userMap.push({ id: v.id, name: v.name, email: v.email });
         });
         return userMap;
     },
@@ -27,6 +28,11 @@ const UserFacade: IUserFacade = {
      * @memberof UserFacade
      */
     async create(user: UserTo): Promise<void> {
+
+        if (!await UserService.validate(user)) {
+            throw new ParametersError('name is required')
+        }
+
         await UserService.create(user);
     }
 

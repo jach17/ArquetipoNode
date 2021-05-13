@@ -33,10 +33,50 @@
             }
           }
         }
+      },
+      "post": {
+        "description": "Get all Users",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "description": "object user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "All Users",
+            "content": {
+              "appication/json": {
+                "example": {
+                  "status": 200,
+                  "message": "ok"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/ping/": {
-      "post": {
+      "get": {
         "description": "Test service",
         "tags": [
           "Ping"
@@ -57,6 +97,47 @@
       }
     }
   },
-  "components": {},
+  "components": {
+    "schemas": {
+      "UserTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "rjaforever"
+          },
+          "email": {
+            "type": "string",
+            "example": "rjaforever@gmail.com"
+          }
+        }
+      },
+      "ErrorTo": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "description": "Código de error de negocio",
+            "example": 10
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error de sistema",
+            "example": "Null pointer"
+          },
+          "userError": {
+            "type": "string",
+            "description": "Human readable error",
+            "example": "No se encontró información"
+          },
+          "info": {
+            "type": "string",
+            "description": "Información sobre solución del error",
+            "example": "http://info.com"
+          }
+        }
+      }
+    }
+  },
   "tags": []
 }

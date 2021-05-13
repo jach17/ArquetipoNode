@@ -1,9 +1,11 @@
 export class UserTo {
     id: number;
     name: string;
+    email: string;
 
-    constructor(id: number, name: string) {
+    constructor(id: number, name: string, email: string) {
         this.id = id;
         this.name = name;
+        this.email = email;
     }
 }

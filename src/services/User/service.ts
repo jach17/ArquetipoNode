@@ -1,6 +1,7 @@
 import { IUserService } from "./interface";
 import User from "../../models/User.model";
 import { UserTo } from "../../to/UserTo";
+import { Validate } from "sequelize-typescript";
 
 
 /**
@@ -17,8 +18,18 @@ const UserService: IUserService = {
     },
 
     async create(user: UserTo): Promise<void> {
-        let userModel: any = { ...user }
-        await User.create(userModel);
+        let userModel: User = await User.create(user);
+        console.log('Usuario creado', userModel);
+    },
+
+    async validate(user: UserTo): Promise<boolean> {
+        let flag: boolean = true;
+        const { name } = user;
+        console.log("name:", user);
+        if (!name) {
+            flag = false;
+        }
+        return flag;
     }
 }
 
