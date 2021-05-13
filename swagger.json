@@ -11,11 +11,11 @@
     }
   ],
   "apis": [
-    "C:\\Users\\Ricardo.Jimenez\\Documents\\nodejs-generator\\user-service\\src\\**\\**\\*.ts"
+    "C:\\Users\\Ricardo.Jimenez\\Documents\\workspace\\user-service\\src\\**\\**\\*.ts"
   ],
   "paths": {
     "/users/": {
-      "post": {
+      "get": {
         "description": "Get all Users",
         "tags": [
           "Users"

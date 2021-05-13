@@ -11,7 +11,7 @@ const router: Router = Router();
  * @example http://localhost:PORT/users
  * @swagger
  * /users/:
- *  post:
+ *  get:
  *    description: Get all Users
  *    tags: ["Users"]
  *    responses:
