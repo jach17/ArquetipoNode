@@ -1,7 +1,8 @@
 import { IUserService } from "./interface";
 import User from "../../models/User.model";
 import { UserTo } from "../../to/UserTo";
-import { Validate } from "sequelize-typescript";
+import { Op } from "sequelize";
+import { ParametersError } from "../../config/error";
 
 
 /**
@@ -30,7 +31,40 @@ const UserService: IUserService = {
             flag = false;
         }
         return flag;
+    },
+
+    async update(id: number, userTO: UserTo): Promise<[number, User[]]> {
+        return await User.update(userTO, {
+            where: {
+                id: {
+                    [Op.eq]: id
+                }
+            }
+        });
+    },
+
+    async deleteUser(id: number): Promise<number> {
+        return await User.destroy({
+            where: {
+                id: {
+                    [Op.eq]: id
+                }
+            }
+        })
+    },
+
+    async validateDelete(user: any): Promise<void> {
+        const { id } = user;
+        if (!id) {
+            throw new ParametersError('id is required')
+        }
+        if (isNaN(id)) {
+            throw new ParametersError('id is number')
+        }
+
     }
+
+
 }
 
 export default UserService;

@@ -69,6 +69,10 @@ router.get('', UserFacade.findAll);
  */
 router.post('', UserFacade.create);
 
+router.put('', UserFacade.update);
+
+router.delete('', UserFacade.deleteUser);
+
 /**
  * GET method route
  * @example http://localhost:PORT/ping

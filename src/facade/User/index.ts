@@ -36,3 +36,38 @@ export async function create(req: Request, res: Response, next: NextFunction): P
         next(error);
     }
 }
+
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+export async function update(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const { query: { userId } = {} } = req
+        let user: UserTo = { ...req.body };
+        await UserFacade.update(Number(userId), user);
+        res.status(HttpStatusCode.OK).json('ok');
+    } catch (error) {
+        next(error);
+    }
+}
+
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+export async function deleteUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const { query: { userId } = {} } = req
+        await UserFacade.deleteUser({ id: userId });
+        res.status(HttpStatusCode.OK).json('ok');
+    } catch (error) {
+        next(error);
+    }
+}
