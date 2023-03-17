@@ -2,6 +2,7 @@ import express from 'express';
 import * as Middleware from '../interceptors/middleware';
 import * as Routes from '../../api';
 import { db } from '../connection/database';
+import * as Kafka from "../stream/kafka";
 
 /**
  * @constant {express.Application}
@@ -25,6 +26,24 @@ db.authenticate()
     db.sync();
 })
 .catch(err => console.error('Error connecting database', err))
+
+// initialize Kafka
+// let allTopics = [
+//     'pruebas',
+//     'test'
+// ];
+// let topicsToSubscribe = [
+//     'pruebas',
+//     'test'
+// ];
+// Kafka.init(allTopics).then(async() => {
+
+//     await Kafka.suscribe(topicsToSubscribe, (topic: any, partition: any, message: any)=>{
+//         console.log('Topic: ', topic, 'Partition: ',partition, 'Message: ',message?.value?.toString())
+//     });
+//     console.log('Connected to Kafka');
+// })
+// .catch(err => console.error('Error connecting kafka', err))
 
 /**
  * @constructs express.Application Error Handler
