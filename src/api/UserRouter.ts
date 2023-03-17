@@ -12,7 +12,7 @@ const router: Router = Router();
  * @example http://localhost:PORT/users
  * @swagger
  * /users/:
- *  post:
+ *  get:
  *    description: Get all Users
  *    tags: ["Users"]
  *    responses:
@@ -20,8 +20,25 @@ const router: Router = Router();
  *        description: All Users
  *        content:
  *          appication/json:
- *            example:
- *              status: 200
+ *            schema:
+ *              $ref: '#/components/schemas/UserTO'
+ *      400:
+ *        description: Error bad parameters
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ErrorTo'
+ * components:
+ *   schemas:
+ *     UserTO:
+ *       type: object
+ *       properties:
+ *         name:
+ *              type: string
+ *              example: rjaforever
+ *         email:
+ *              type: string
+ *              example: rjaforever@gmail.com
  *              message: Users
  */
 router.get('/users', UserFacade.findAll);
@@ -31,7 +48,7 @@ router.get('/users', UserFacade.findAll);
  * @example http://localhost:PORT/ping
  * @swagger
  * /ping/:
- *  post:
+ *  get:
  *    description: Test service
  *    tags: ["Ping"]
  *    responses:
@@ -44,7 +61,7 @@ router.get('/users', UserFacade.findAll);
  *              message: pong
  */
 router.get('/ping', async (req, res) => {
-    logger.info("(%s) - Request accepted: %s","UserRouter.ts",req);
+    logger.info("(%s) - Request accepted: %s","UserRouter.ts",'');
     res.send('pong');
     logger.info("(%s) - Sending Response: %s","UserRouter.ts",{data:"pong"});
 });
