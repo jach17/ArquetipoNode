@@ -21,11 +21,17 @@ export interface IUserFacade {
    * @returns {Promise<any[]>}
    * @memberof IUserFacade
    */
-  delete_user(id: number): Promise<void>;
+  update_user(idToUpdate: number, userTo: UserTo): Promise<void>;
 
   /**
    * @returns {Promise<any[]>}
    * @memberof IUserFacade
    */
-  update_user(idToUpdate: number, userTo: UserTo): Promise<void>;
+  publish_delete_user(id: number): Promise<void>;
+
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IUserFacade
+   */
+  consumer_delete_user(idToDelete: number): Promise<void>;
 }

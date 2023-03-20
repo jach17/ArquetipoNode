@@ -126,7 +126,7 @@ router.post("", UserFacade.create);
  *            schema:
  *              $ref: '#/components/schemas/ErrorTo'
  */
-router.delete("/:id/id", UserFacade.delete_user);
+router.delete("/:id/id", UserFacade.publish_delete_user);
 
 /**
  * PATCH method route

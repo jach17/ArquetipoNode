@@ -70,7 +70,7 @@ describe("UserFacade Test", () => {
     it("should return id deleted", async () => {
       let idToDelete: number = 999;
       try {
-        await UserFacade.delete_user(idToDelete);
+        await UserFacade.publish_delete_user(idToDelete);
         //Expect como el de update
       } catch (error) {
         expect(error).equal(new ParametersError("No se pudo eliminar"));

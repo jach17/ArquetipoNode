@@ -54,7 +54,7 @@ export async function create(
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function delete_user(
+export async function publish_delete_user(
   req: Request,
   res: Response,
   next: NextFunction
@@ -64,7 +64,7 @@ export async function delete_user(
       params: { id },
     } = req;
 
-    let result = await UserFacade.delete_user(+id);
+    let result = await UserFacade.publish_delete_user(+id);
     console.log(result);
     res.status(HttpStatusCode.OK).json("Deleted");
   } catch (error) {

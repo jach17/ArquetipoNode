@@ -3,6 +3,7 @@ import { UserService } from "../../services";
 import { UserTo } from "../../to/UserTo";
 import { IUserFacade } from "./interface";
 import { ParametersError } from "../../config/error/index";
+import * as Kafka from "../../config/stream/kafka";
 
 /**
  * @export
@@ -33,9 +34,22 @@ const UserFacade: IUserFacade = {
    * @returns {Promise < any[] >}
    * @memberof UserFacade
    */
-  async delete_user(idToDelete: number): Promise<void> {
+  async publish_delete_user(idToDelete: number): Promise<void> {
+    try {
+      // await UserService.delete_user(idToDelete);
+      await Kafka.send("user-service-topic", `${idToDelete}`);
+    } catch (error) {
+      throw new ParametersError("No se pudo eliminar");
+    }
+  },
+  /**
+   * @returns {Promise < any[] >}
+   * @memberof UserFacade
+   */
+  async consumer_delete_user(idToDelete: number): Promise<void> {
     try {
       await UserService.delete_user(idToDelete);
+      //Kafka.send("user-service-topic", idToDelete);
     } catch (error) {
       throw new ParametersError("No se pudo eliminar");
     }
