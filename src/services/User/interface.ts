@@ -6,22 +6,33 @@ import { UserTo } from "../../to/UserTo";
  * @interface IUserService
  */
 export interface IUserService {
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IUserService
+   */
+  findAll(): Promise<any[]>;
 
-    /**
-     * @returns {Promise<any[]>}
-     * @memberof IUserService
-     */
-    findAll(): Promise<any[]>;
+  /**
+   * @returns {Promise<UserTo>}
+   * @memberof IUserService
+   */
+  validateExistEmail(email?: string): Promise<void>;
 
-     /**
-     * @returns {Promise<UserTo>}
-     * @memberof IUserService
-     */
-     validateExistEmail(email?: string): Promise<void>;
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IUserService
+   */
+  create(user: UserTo): Promise<Users>;
 
-    /**
-     * @returns {Promise<any[]>}
-     * @memberof IUserService
-     */
-    create(user: UserTo): Promise<Users>
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IUserService
+   */
+  delete_user(idToDelete: number): Promise<void>;
+
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IUserService
+   */
+  update_user(idToUpdate: number, userTo: UserTo): Promise<void>;
 }

@@ -125,6 +125,90 @@
           }
         }
       }
+    },
+    "/users/{id}/id": {
+      "delete": {
+        "description": "delete Users",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number",
+              "example": 1
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Users"
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "update Users",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number",
+              "example": 1
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "object user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserTo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "All Users",
+            "content": {
+              "appication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
