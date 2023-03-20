@@ -1,7 +1,8 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as swaggerUi from 'swagger-ui-express';
-import UserRouter from './UserRouter';
+import { router as UserRouter } from './UserRouter';
+import { router as RoleRouter } from './RoleRouter';
 import cors from 'cors';
 let swaggerDoc: Object;
 
@@ -36,7 +37,12 @@ export function init(app: express.Application): void {
      * @description Forwards any requests to the /auth URI to our AuthRouter
      * @constructs
      */
-    app.use('/', UserRouter);
+    app.use('/users', UserRouter);
+    /**
+     * @description Forwards any requests to the /auth URI to our AuthRouter
+     * @constructs
+     */
+    app.use('/roles', RoleRouter)
 
     /**
      * @description

@@ -11,22 +11,33 @@
     }
   ],
   "apis": [
-    "C:\\Users\\Ricardo.Jimenez\\Documents\\workspace\\user-service\\src\\**\\**\\*.ts"
+    "C:\\Users\\Usuario\\Documents\\NodeTest\\Repaso_node\\Repaso_node\\user-service\\src\\**\\**\\*.ts"
   ],
   "paths": {
-    "/users/": {
-      "get": {
-        "description": "Get all Users",
+    "/roles": {
+      "post": {
+        "description": "create Roles",
         "tags": [
-          "Users"
+          "Roles"
         ],
+        "requestBody": {
+          "description": "object roles",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleTo"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "All Users",
+            "description": "All Roles",
             "content": {
               "appication/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserTO"
+                  "$ref": "#/components/schemas/RoleTo"
                 }
               }
             }
@@ -44,20 +55,70 @@
         }
       }
     },
-    "/ping/": {
+    "/users/": {
       "get": {
-        "description": "Test service",
+        "description": "Get all Users",
         "tags": [
-          "Ping"
+          "Users"
         ],
         "responses": {
           "200": {
-            "description": "Pong",
+            "description": "All Users",
             "content": {
               "appication/json": {
-                "example": {
-                  "status": 200,
-                  "message": "pong"
+                "schema": {
+                  "$ref": "#/components/schemas/UserTo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "description": "create Users",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "description": "object user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserTo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "All Users",
+            "content": {
+              "appication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
                 }
               }
             }
@@ -104,6 +165,41 @@
             "type": "string",
             "description": "Información sobre solución del error",
             "example": "http://info.com"
+          }
+        }
+      },
+      "RoleTo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "id of Role",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "name of Role",
+            "example": "Admin"
+          }
+        }
+      },
+      "UserTo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "id of user",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "name of user",
+            "example": "Pedro"
+          },
+          "email": {
+            "type": "string",
+            "description": "email of user",
+            "example": "pedro@axity.com"
           }
         }
       }
