@@ -5,10 +5,15 @@ import { RoleTo } from "../../to/RoleTo";
  * @interface IRoleFacade
  */
 export interface IRoleFacade {
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleFacade
+   */
+  create(role: RoleTo): Promise<RoleTo>;
 
-    /**
-     * @returns {Promise<any[]>}
-     * @memberof IRoleFacade
-     */
-        create(role: RoleTo): Promise<RoleTo>;
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleFacade
+   */
+  findAll(): Promise<any[]>;
 }

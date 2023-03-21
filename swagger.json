@@ -53,9 +53,37 @@
             }
           }
         }
+      },
+      "get": {
+        "description": "Get all roles",
+        "tags": [
+          "Roles"
+        ],
+        "responses": {
+          "200": {
+            "description": "All roles",
+            "content": {
+              "appication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleTo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleTo"
+                }
+              }
+            }
+          }
+        }
       }
     },
-    "/users/": {
+    "/users": {
       "get": {
         "description": "Get all Users",
         "tags": [
@@ -83,9 +111,7 @@
             }
           }
         }
-      }
-    },
-    "/users": {
+      },
       "post": {
         "description": "create Users",
         "tags": [
@@ -213,17 +239,39 @@
   },
   "components": {
     "schemas": {
-      "UserTO": {
+      "RoleTo": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "example": "rjaforever"
+            "example": "Admin",
+            "description": "name of Role"
+          },
+          "id": {
+            "type": "number",
+            "description": "id of Role",
+            "example": 1
+          }
+        }
+      },
+      "UserTo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Pedro",
+            "description": "name of user"
           },
           "email": {
             "type": "string",
-            "example": "rjaforever@gmail.com",
-            "message": "Users"
+            "example": "pedro@axity.com",
+            "message": "Users",
+            "description": "email of user"
+          },
+          "id": {
+            "type": "number",
+            "description": "id of user",
+            "example": 1
           }
         }
       },
@@ -249,41 +297,6 @@
             "type": "string",
             "description": "Información sobre solución del error",
             "example": "http://info.com"
-          }
-        }
-      },
-      "RoleTo": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "id of Role",
-            "example": 1
-          },
-          "name": {
-            "type": "string",
-            "description": "name of Role",
-            "example": "Admin"
-          }
-        }
-      },
-      "UserTo": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "id of user",
-            "example": 1
-          },
-          "name": {
-            "type": "string",
-            "description": "name of user",
-            "example": "Pedro"
-          },
-          "email": {
-            "type": "string",
-            "description": "email of user",
-            "example": "pedro@axity.com"
           }
         }
       }

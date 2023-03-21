@@ -11,7 +11,7 @@ const router: Router = Router();
  * GET method route
  * @example http://localhost:PORT/users
  * @swagger
- * /users/:
+ * /users:
  *  get:
  *    description: Get all Users
  *    tags: ["Users"]
@@ -30,7 +30,7 @@ const router: Router = Router();
  *              $ref: '#/components/schemas/UserTo'
  * components:
  *   schemas:
- *     UserTO:
+ *     UserTo:
  *       type: object
  *       properties:
  *         name:

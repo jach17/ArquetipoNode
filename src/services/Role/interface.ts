@@ -6,10 +6,15 @@ import { RoleTo } from "../../to/RoleTo";
  * @interface IRoleService
  */
 export interface IRoleService {
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleService
+   */
+  create(role: RoleTo): Promise<RoleTo>;
 
-    /**
-     * @returns {Promise<any[]>}
-     * @memberof IRoleService
-     */
-    create(role: RoleTo): Promise<RoleTo>
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleService
+   */
+  findAll(): Promise<any[]>;
 }

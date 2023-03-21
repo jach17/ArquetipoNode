@@ -34,4 +34,11 @@ describe("RoleFacade Test", () => {
       }
     });
   });
+
+  describe("FindAll", () => {
+    it("should return roles", async () => {
+      const roles: any[] = await RoleFacade.findAll();
+      expect(1).equal(roles.length);
+    });
+  });
 });
