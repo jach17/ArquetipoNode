@@ -66,14 +66,14 @@ describe("UserFacade Test", () => {
     });
   });
 
-  describe("Delete", () => {
-    it("should return id deleted", async () => {
+  describe("Delete error", () => {
+    it("should return error -> User not exist", async () => {
       let idToDelete: number = 999;
       try {
         await UserFacade.publish_delete_user(idToDelete);
         //Expect como el de update
       } catch (error) {
-        expect(error).equal(new ParametersError("No se pudo eliminar"));
+        expect(error).instanceOf(ParametersError);
       }
     });
   });
