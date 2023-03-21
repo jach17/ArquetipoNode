@@ -1,10 +1,9 @@
 import RoleFacade from "./facade";
 import { NextFunction, Request, Response } from "express";
 import HttpStatusCode from "../../commons/constants/HttpStatusCode";
-import { UserTo } from "../../to/UserTo";
+import { RoleTo } from "../../to/RoleTo";
 import { json } from "sequelize/types";
 import { logger } from "../../config/logger/logger";
-import { RoleTo } from "../../to/RoleTo";
 
 /**
  * @export
@@ -74,6 +73,33 @@ export async function delete_role(
     res.status(HttpStatusCode.OK).json("Deleted");
   } catch (error) {
     console.log("Error en facade: ", error);
+    next(error);
+  }
+}
+
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+export async function update_role(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const {
+      params: { id },
+    } = req;
+    let roleTo: RoleTo = { ...req.body };
+
+    let result = await RoleFacade.update_role(Number(id), roleTo);
+    console.log(result);
+    res.status(HttpStatusCode.OK).json("Updated");
+  } catch (error) {
+    console.log("Error en facade update: ", error);
     next(error);
   }
 }

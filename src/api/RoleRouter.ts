@@ -102,6 +102,48 @@ router.get("", RoleFacade.findAll);
 router.delete("/:id/id", RoleFacade.delete_role);
 
 /**
+ * PATCH method route
+ * @example http://localhost:PORT/roles
+ * @swagger
+ * /roles/{id}/id:
+ *  patch:
+ *    description: update roles
+ *    tags: ["Roles"]
+ *    parameters : [
+ *      {
+ *         name: 'id',
+ *         in: 'path',
+ *         schema: {
+ *           type: 'number',
+ *           example: 1
+ *         },
+ *         required: true
+ *      }
+ *    ]
+ *    requestBody:
+ *      description: object user
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/UserTo'
+ *    responses:
+ *      200:
+ *        description: All roles
+ *        content:
+ *          appication/json:
+ *            schema:
+ *              $ref: '#/components/schemas/UserTo'
+ *      400:
+ *        description: Error bad parameters
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ErrorTo'
+ */
+router.patch("/:id/id", RoleFacade.update_role);
+
+/**
  * @export {express.Router}
  */
 export { router };

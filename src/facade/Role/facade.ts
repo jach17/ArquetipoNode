@@ -3,6 +3,7 @@ import { RoleService } from "../../services";
 import { RoleTo } from "../../to/RoleTo";
 import { UserTo } from "../../to/UserTo";
 import { IRoleFacade } from "./interface";
+import { ParametersError } from "../../config/error/index";
 
 /**
  * @export
@@ -34,6 +35,14 @@ const RoleFacade: IRoleFacade = {
   async delete_role(idToDelete: number): Promise<void> {
     let rolesResponse = await RoleService.delete_role(idToDelete);
     return rolesResponse;
+  },
+
+  async update_role(idToUpdate: number, roleTo: RoleTo): Promise<void> {
+    try {
+      await RoleService.update_role(idToUpdate, roleTo);
+    } catch (error) {
+      throw new ParametersError("No se pudo actualizar");
+    }
   },
 };
 

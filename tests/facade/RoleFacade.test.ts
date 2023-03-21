@@ -42,6 +42,21 @@ describe("RoleFacade Test", () => {
     });
   });
 
+  describe("Update", () => {
+    it("should return id updated", async () => {
+      let idToUpdate: number = 2;
+      let roleTo: RoleTo = {
+        name: "SuperAdminBro",
+      };
+      try {
+        await RoleFacade.update_role(idToUpdate, roleTo);
+        //expect(result).instanceOf(Promise<void>);
+      } catch (error) {
+        expect(error).equal(new ParametersError("No se pudo actualizar"));
+      }
+    });
+  });
+
   describe("Delete error", () => {
     it("should return error -> User not exist", async () => {
       let idToDelete: number = 999;

@@ -48,6 +48,15 @@ const RoleService: IRoleService = {
       throw new ParametersError("No se pudo eliminar");
     }
   },
+  async update_role(idToUpdate: number, roleTo: RoleTo): Promise<void> {
+    try {
+      let result = await Roles.update(roleTo, { where: { id: idToUpdate } });
+      console.log("Result on service update: ", result);
+    } catch (error) {
+      console.log("Error on service update ", error);
+      throw new ParametersError("No se pudo actualizar");
+    }
+  },
 };
 
 export default RoleService;

@@ -21,4 +21,9 @@ export interface IRoleFacade {
    * @memberof IRoleFacade
    */
   delete_role(idToDelete: number): Promise<void>;
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleFacade
+   */
+  update_role(idToUpdate: number, roleTo: RoleTo): Promise<void>;
 }

@@ -22,4 +22,9 @@ export interface IRoleService {
    * @memberof IRoleService
    */
   delete_role(idToDelete: number): Promise<void>;
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleService
+   */
+  update_role(idToUpdate: number, roleTo: RoleTo): Promise<void>;
 }
