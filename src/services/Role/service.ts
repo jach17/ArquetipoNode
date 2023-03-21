@@ -29,6 +29,25 @@ const RoleService: IRoleService = {
     let roleResponse = await Roles.findAll();
     return roleResponse;
   },
+
+  /**
+   * @returns {Promise < any[] >}
+   * @memberof RoleFacade
+   */
+
+  async delete_role(idToDelete: number): Promise<void> {
+    try {
+      let result = Roles.destroy({
+        where: {
+          id: idToDelete,
+        },
+      });
+      console.log("Result on service: ", result);
+    } catch (error) {
+      console.log("Error on service: ", error);
+      throw new ParametersError("No se pudo eliminar");
+    }
+  },
 };
 
 export default RoleService;

@@ -41,4 +41,15 @@ describe("RoleFacade Test", () => {
       expect(1).equal(roles.length);
     });
   });
+
+  describe("Delete error", () => {
+    it("should return error -> User not exist", async () => {
+      let idToDelete: number = 999;
+      try {
+        await RoleFacade.delete_role(idToDelete);
+      } catch (error) {
+        expect(error).instanceOf(ParametersError);
+      }
+    });
+  });
 });

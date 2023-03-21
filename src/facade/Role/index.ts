@@ -51,3 +51,29 @@ export async function findAll(
     next(error);
   }
 }
+
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+export async function delete_role(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const {
+      params: { id },
+    } = req;
+
+    let result = await RoleFacade.delete_role(Number(id));
+    console.log(result);
+    res.status(HttpStatusCode.OK).json("Deleted");
+  } catch (error) {
+    console.log("Error en facade: ", error);
+    next(error);
+  }
+}

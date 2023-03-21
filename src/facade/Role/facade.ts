@@ -26,6 +26,15 @@ const RoleFacade: IRoleFacade = {
     let rolesResponse = await RoleService.findAll();
     return rolesResponse;
   },
+
+  /**
+   * @returns {Promise < any[] >}
+   * @memberof RoleFacade
+   */
+  async delete_role(idToDelete: number): Promise<void> {
+    let rolesResponse = await RoleService.delete_role(idToDelete);
+    return rolesResponse;
+  },
 };
 
 export default RoleFacade;

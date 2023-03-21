@@ -17,4 +17,9 @@ export interface IRoleService {
    * @memberof IRoleService
    */
   findAll(): Promise<any[]>;
+  /**
+   * @returns {Promise<any[]>}
+   * @memberof IRoleService
+   */
+  delete_role(idToDelete: number): Promise<void>;
 }
